@@ -1,0 +1,4 @@
+
+
+# Better search on index.docker.io with grep etc.. :
+firefox `sudo docker search   nginx | grep -i proxy    | perl -p -E 's@(^[^\s]+)\s.*\n@http://index.docker.io/u/$1 @'`
