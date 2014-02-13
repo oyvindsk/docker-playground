@@ -1,7 +1,9 @@
 
-# Dockerfile for the wagtail demo, incomplete :(
+# Dockerfile for the wagtail demo, runs eveything in one container
 
-# Run eveything in one container
+# FIXME:  Test prepare_db.sh ..
+
+# Web admin: admin / test
 
 FROM dockerfile/nodejs 
 MAINTAINER Øyvind Skaar
@@ -27,19 +29,9 @@ RUN cd / && git clone https://github.com/torchbox/wagtaildemo.git
 
 RUN cd /wagtaildemo && pip install -r requirements/dev.txt
 
+ADD prepare_db.sh /wagtaildemo
+RUN bash prepare_db.sh
 
-# /etc/init.d/postgresql start
-
-RUN sudo -u postgres createuser --superuser root
-
-# # Fix wagtaildemo/settings/base.py so it uses user 'root' and not 'postgres'
-RUN sed -i "s/'USER': 'postgres'/'USER': 'root'/" /wagtaildemo/wagtaildemo/settings/base.py
-
-RUN createdb wagtaildemo
-RUN cd /wagtaildemo && ./manage.py syncdb --noinput
-RUN cd /wagtaildemo && ./manage.py migrate
-RUN cd /wagtaildemo && ./manage.py createsuperuser
-
-CMD: /etc/init.d/posrgres start && cd ./manage.py runserver 0.0.0.0:8000
+CMD: /etc/init.d/posrgres start && cd /wagtaildemo && ./manage.py runserver 0.0.0.0:8000
 
 
