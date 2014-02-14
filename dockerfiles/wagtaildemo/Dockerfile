@@ -29,9 +29,9 @@ RUN cd / && git clone https://github.com/torchbox/wagtaildemo.git
 
 RUN cd /wagtaildemo && pip install -r requirements/dev.txt
 
-ADD prepare_db.sh /wagtaildemo
-RUN bash prepare_db.sh
+ADD prepare_db.sh /wagtaildemo/
+RUN bash /wagtaildemo/prepare_db.sh
 
-CMD: /etc/init.d/posrgres start && cd /wagtaildemo && ./manage.py runserver 0.0.0.0:8000
+CMD /etc/init.d/postgresql start && cd /wagtaildemo && ./manage.py runserver 0.0.0.0:8000 && echo "Server running"
 
 
