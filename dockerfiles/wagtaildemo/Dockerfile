@@ -13,6 +13,7 @@ RUN apt-get install -y git                       # Just to get the source
 RUN apt-get install -y postgresql  libpq-dev     # Demo can run on sqlite3, but the installer still looks for pg_.. bins
 RUN apt-get install -y python-dev  python-pip
 RUN apt-get install -y libxml2-dev libxslt1-dev
+RUN apt-get install -y libjpeg-dev libtiff-dev zlib1g-dev libfreetype6-dev liblcms2-dev
 
 
 # Usefull for other npm installs, not needed with dockerfile/nodejs:
@@ -32,6 +33,6 @@ RUN cd /wagtaildemo && pip install -r requirements/dev.txt
 ADD prepare_db.sh /wagtaildemo/
 RUN bash /wagtaildemo/prepare_db.sh
 
-CMD /etc/init.d/postgresql start && cd /wagtaildemo && ./manage.py runserver 0.0.0.0:8000 && echo "Server running"
+CMD /etc/init.d/postgresql start && cd /wagtaildemo && echo "Wagtail started on port 80000" && ./manage.py runserver 0.0.0.0:8000 
 
 
