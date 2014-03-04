@@ -33,6 +33,6 @@ RUN cd /wagtaildemo && pip install -r requirements/dev.txt
 ADD prepare_db.sh /wagtaildemo/
 RUN bash /wagtaildemo/prepare_db.sh
 
-CMD /etc/init.d/postgresql start && cd /wagtaildemo && echo "Wagtail started on port 80000" && ./manage.py runserver 0.0.0.0:8000 
+CMD /etc/init.d/postgresql start && cd /wagtaildemo && echo "Wagtail started on port 8000" && ./manage.py runserver 0.0.0.0:8000 
 
 
