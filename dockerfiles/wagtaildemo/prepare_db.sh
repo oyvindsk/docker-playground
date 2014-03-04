@@ -1,6 +1,10 @@
 
 cd /wagtaildemo
 
+# Disable ssl in the postgres config, it makes everything harder and we don't need it anyway.
+# FIXME this will probably break in the future 
+sed -i 's/ssl = true/ssl = false/'  /etc/postgresql/9.1/main/postgresql.conf
+
 /etc/init.d/postgresql start
 
 sudo -u postgres createuser --superuser root
