@@ -15,10 +15,10 @@
 # - Mount a volume with the app. 
 
 ## Building from Dockerfile:
-# docker build -t oyvindsk/mojolicious-latest:test .
+# docker build -t FOO/mojolicious-latest .
 # (you might want to use --rm or --no-cache to ensure you get the latest versions?)
 
-FROM perl:5.20
+FROM perl:latest
 MAINTAINER Øyvind Skaar
 
 # App::cpanminus is now in the official perl Docker image
