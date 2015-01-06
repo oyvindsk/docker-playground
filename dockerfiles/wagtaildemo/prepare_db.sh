@@ -12,8 +12,8 @@ sudo -u postgres createuser --superuser root
 sed -i "s/'USER': 'postgres'/'USER': 'root'/" /wagtaildemo/wagtaildemo/settings/base.py
 
 createdb wagtaildemo
-./manage.py syncdb --noinput
-./manage.py migrate
+./manage.py migrate --noinput
+./manage.py load_initial_data
 
 # ./manage.py createsuperuser
 
