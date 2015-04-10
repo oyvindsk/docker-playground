@@ -2,26 +2,34 @@
 FROM ubuntu:14.04.2
 MAINTAINER Øyvind Skaar
 
+# Dockerfile to clone the latest version of the go book and build the pdf
+# Learning Go: http://github.com/miekg/gobook 
 
+# This takes a while and downloads quite a lot of dependencies.. you might want to grap the docker image from the hub instead: 
 
-RUN apt-get update 
-RUN apt-get install -y inkscape
-RUN apt-get install -y gnumeric
-## ttf-droid
-RUN apt-get install -y fonts-droid
-RUN apt-get install -y ttf-dejavu
-##ttf-sazanami-gothic
-RUN apt-get install -y fonts-vlgothic
-## not in 14.4.02:   ttf-arphic-ukai  , replaced by:
-RUN apt-get install -y fonts-arphic-ukai
-RUN apt-get install -y texlive-fonts-recommended
-RUN apt-get install -y texlive-extra-utils
-RUN apt-get install -y texlive-xetex
-RUN apt-get install -y texlive-latex-extra
-RUN apt-get install -y texlive-latex-recommended
-# RUN apt-get install -y latex-cjk-xcjk
-RUN apt-get install -y git-core
-RUN apt-get install -y make
+# Dependencies taken from http://github.com/miekg/gobook 
+# Missing in this version of Ubuntu: (?)
+#   ttf-droid           , replaced by fonts-droid#
+#   ttf-sazanami-gothic , replaced by fonts-vlgothic (?)
+#   ttf-arphic-ukai     , replaced by: fonts-arphic-ukai
+#   latex-cjk-xcjk
+
+RUN apt-get update \
+    && apt-get install -y -q \
+        inkscape \
+        gnumeric \
+        fonts-droid \
+        ttf-dejavu \
+        fonts-vlgothic \
+        fonts-arphic-ukai \
+        texlive-fonts-recommended \
+        texlive-extra-utils \
+        texlive-xetex \
+        texlive-latex-extra \
+        texlive-latex-recommended \
+        git-core \
+        make \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root
 
