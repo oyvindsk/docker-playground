@@ -6,6 +6,7 @@ MAINTAINER Øyvind Skaar
 # Learning Go: http://github.com/miekg/gobook 
 
 # This takes a while and downloads quite a lot of dependencies.. you might want to grap the docker image from the hub instead: 
+# https://registry.hub.docker.com/u/oyvindsk/gobook-build-pdf/
 
 # Dependencies taken from http://github.com/miekg/gobook 
 # Missing in this version of Ubuntu: (?)

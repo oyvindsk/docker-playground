@@ -16,5 +16,5 @@ This can also serve as an example for similar build images in the future.
 
 
 ## Bugs
-Some fonts are missing because the ubuntu packages where renamed or removed. This can cause some text to be rendered wrong. But I haven't noticed any problems yet.
+Some fonts are missing because the ubuntu packages where renamed or removed. This can cause some text to be rendered wrong, but I haven't noticed any problems yet.
 
