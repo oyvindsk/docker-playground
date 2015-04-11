@@ -14,7 +14,10 @@ This can also serve as an example for similar build images in the future.
 
 ## Run
     mkdir output
-    sudo docker run -t -i --rm -v $(pwd)/output:/root/volume oyvindsk/gobook-build-pdf
+    sudo docker run --rm -v $(pwd)/output:/root/volume oyvindsk/gobook-build-pdf
+    
+    # OR:
+    sudo docker run --rm oyvindsk/gobook-build-pdf > learn-go.pdf
 
 
 ## Bugs
