@@ -1,6 +1,6 @@
 
 FROM ubuntu:14.04.2
-MAINTAINER Øyvind Skaar
+MAINTAINER Øyvind Skaar (@oyvindsk)
 
 # Dockerfile to clone the latest version of the go book and build the pdf
 # Learning Go: http://github.com/miekg/gobook 
